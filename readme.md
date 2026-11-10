@@ -3,23 +3,25 @@ Phenotypic Screening of Dup15q Syndrome in iPSC-Derived Neuronal Networks (HD-ME
 Overview
 This repository contains an advanced, automated MATLAB pipeline designed for the quantitative analysis of High-Density Microelectrode Array (HD-MEA) recordings. The project evaluates the electrophysiological dynamics of human induced pluripotent stem cell (iPSC)-derived excitatory neuronal networks (Ngn2), rigorously comparing a healthy Control group against a Dup15q pathological disease model (N = 3 wells per condition).
 
-The analytical framework bridges macro-scale network dynamics with high-resolution micro-architectural feature extraction, establishing intra-burst structural fragmentation as a robust, objective electrophysiological biomarker for Dup15q phenotypic screening.
+The analytical framework bridges macro-scale network dynamics with high-resolution micro-architectural feature extraction, exploring intra-burst structural fragmentation as a potential electrophysiological feature for Dup15q phenotypic characterization.
 
 1. Primary Phenotypic Screening (Macro-Metrics)
 A primary comparison across standard electrophysiological descriptors reveals distinct operational characteristics between healthy and pathological networks.
 
-While global baseline activity (Mean Firing Rate) and network synchronization frequency (Network Burst Rate) show overlapping distributions, parameters characterizing intra-burst activity—specifically Intra-Burst Firing Rate and the Percentage of Spikes During Network Bursts—yielded a p-value of 0.1000.
+While global baseline activity (Mean Firing Rate) showed no clear separation between Control and Dup15q networks (p = 0.4000), the Network Burst Rate exhibited complete rank separation between the two conditions (p = 0.1000). Among intra-burst metrics, the Percentage of Spikes During Network Bursts also showed complete rank separation (p = 0.1000), whereas Intra-Burst Firing Rate showed no comparable separation (p = 0.7000).
+
 
 Statistical Foundation (N = 3 Limitation & Complete Rank Separation)
-Group comparisons are performed at the well level utilizing a two-sided Mann-Whitney U test (Wilcoxon rank-sum). With N = 3 wells per group, the total number of unique rank permutations is 20. Consequently, the absolute minimum mathematically achievable two-tailed p-value is exactly:
-
+Group comparisons are performed at the well level using a two-sided Mann–Whitney U test (Wilcoxon rank-sum test). With N = 3 wells per group, the total number of possible rank allocations is 20. Consequently, the minimum achievable exact two-sided p-value is:
 p_min = 2/20 = 0.1000
-A result of p = 0.1000 does not indicate a lack of statistical effect; rather, it represents complete rank separation between experimental conditions (every Dup15q well ranks strictly above or below every Control well). This proves that the macroscopic network capability is preserved, but the Dup15q mutation profoundly alters how spikes are coordinated within the burst window.
+Therefore, even complete rank separation between the experimental conditions cannot reach the conventional statistical significance threshold of p < 0.05 with the current sample size.
+
+For selected metrics, including Network Burst Rate, Percentage of Spikes During Network Bursts, and Burst Fragmentation, the observed values showed complete rank separation between Control and Dup15q wells. These findings indicate marked differences in the current dataset, although their statistical significance and reproducibility require further investigation using a larger sample size.
 
 2. Micro-Architecture: Raster & Population IFR Overlay
 Because the core phenotypic divergence is hidden within the micro-dynamics of individual events, global averages are insufficient. To visualize this, the pipeline features a dual-axis architecture overlaying single-electrode raster plots with the smoothed population Instantaneous Firing Rate (IFR).
 
-This reveals a striking qualitative contrast: healthy Control networks discharge in a cohesive, single-peaked firing wave, whereas Dup15q networks exhibit severe intra-burst stuttering, characterized by rapid oscillations and secondary sub-peaks.
+The representative recordings show qualitative differences in the temporal organization of intra-burst activity. Control networks generally display smoother, predominantly single-peaked firing profiles, whereas Dup15q networks show more variable profiles, sometimes characterized by multiple peaks and secondary activity patterns.
 
 Representative Well Comparisons (Control vs. Dup15q)
 	•	Pair 1: raster_ifr_overlay_pair_1.png
@@ -35,7 +37,7 @@ Single-Burst Micro-Analysis
 Detailed view of an individual Dup15q network burst undergoing severe structural fragmentation (N = 10 detected sub-peaks):
 
 Group-Level Quantification
-Averaging fragment counts across all network bursts per well establishes a powerful quantitative separator. Healthy controls maintain tight, cohesive bursts averaging 1 fragment, while Dup15q networks fracture into 7.5 to 12 distinct sub-events per burst, achieving complete rank separation (p = 0.1000).
+Averaging fragment counts across network bursts provides a quantitative measure of intra-burst temporal organization. In the current dataset, Control networks displayed predominantly single-peaked profiles, averaging approximately 1 fragment per burst, whereas Dup15q networks showed higher fragment counts, ranging from 7.5 to 12 sub-peaks per burst. These observations showed complete rank separation between the three wells in each condition (p = 0.1000), suggesting that burst fragmentation may represent a promising candidate feature for further investigation in Dup15q neuronal networks.
 
 Repository Structure
 HD-MEA_Dup15q_Analysis/
